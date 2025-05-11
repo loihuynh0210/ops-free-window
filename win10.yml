@@ -1,0 +1,33 @@
+services:
+  windows:
+    image: dockurr/windows
+    container_name: windows
+    environment:
+      VERSION: "11"
+      USERNAME: "MASTER"
+      PASSWORD: "admin@123"
+      RAM_SIZE: "2G"    #2G    # Changed from 8G to 2G
+      CPU_CORES: "4" # 4
+      #GPU: "auto"
+      #GPU_MEMORY: "512M" # 512M
+      #GPU_TYPE: "auto"
+      #GPU_DRIVER: "auto"
+      #GPU_DRIVER_VERSION: "auto"
+      #GPU_DRIVER_INSTALL: "auto"
+      #GPU_DRIVER_INSTALL_VERSION: "auto"
+      #GPU_DRIVER_INSTALL_URL: "auto"
+      DISK_SIZE: "256G" # 256G
+      DISK2_SIZE: "100G" # 100G
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "8006:8006"
+      - "3389:3389/tcp"
+      - "3389:3389/udp"
+    volumes:
+      - ./windows:/storage
+    restart: always
+    stop_grace_period: 2m
