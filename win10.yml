@@ -3,13 +3,18 @@ services:
     image: dockurr/windows
     container_name: windows
     environment:
+      EDITION: "core"
       VERSION: "11"
       USERNAME: "MASTER"
       PASSWORD: "admin@123"
-      RAM_SIZE: "2G"
-      CPU_CORES: "16"      # Set CPU_CORES to 16
+      RAM_SIZE: "2G"     # Set RAM_SIZE to 3G
+      CPU_CORES: "8"      # Set CPU_CORES to 16
       DISK_SIZE: "256G"
       DISK2_SIZE: "100G"
+      MANUAL: "Y"
+      LANGUAGE: "en-US"
+      REGION: "en-US"
+      KEYBOARD: "en-US"
     devices:
       - /dev/kvm
       - /dev/net/tun
